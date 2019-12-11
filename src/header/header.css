@@ -1,0 +1,28 @@
+.header {
+    margin-top: 20px;
+    height: 60px;
+    background-color: silver;
+    border-top: solid 2px rebeccapurple;
+    border-bottom: solid 2px rebeccapurple;
+    padding: 10px;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+.header ul {
+    height: 40px;
+    display: block;
+}
+.right {
+    float: right;
+}
+.left {
+    display: inline-block;
+    float: left;
+}
+.logo {
+    height: 100%;
+    background-color: black;
+    margin-right: 20px;
+    display: inline-block;
+    float: left;
+}

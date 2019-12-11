@@ -1,0 +1,26 @@
+.edit-ad {
+    text-align: center;
+    margin-top: 150px;
+}
+
+.edit {
+    font-size: 27px;
+    margin-top: 20px;
+    font-weight: bold;
+    /* display: inline-block; */
+}
+
+.edit label {
+    display: block;
+}
+
+.edit input {
+    width: 25%;
+    height: 30px;
+    font-size: 20px;
+    background-color: silver;
+}
+
+form button {
+    background-color: silver;
+}

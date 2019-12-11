@@ -1,0 +1,28 @@
+form {
+    text-align: center;
+    margin-top: 150px;
+}
+
+.login {
+    font-size: 27px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.login input {
+    width: 12%;
+    height: 30px;
+    font-size: 20px;
+    background-color: silver;
+}
+
+.login label {
+    display: block;
+}
+
+form button {
+    background-color: silver;
+}
+
+
+

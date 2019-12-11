@@ -1,0 +1,12 @@
+.home {
+    text-align: center;
+}
+
+.home button {
+    font-weight: bold;
+    font-size: 25px;
+    background-color: blue;
+    border: solid 2px black;
+    border-radius: 3px;
+    color: silver;
+}

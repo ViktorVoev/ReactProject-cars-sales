@@ -1,0 +1,16 @@
+
+.header-link a:hover {
+    color: rgb(226, 62, 62);
+    border-top: solid 1px rebeccapurple;
+    border-bottom: solid 1px rebeccapurple;
+}
+.header-link {
+    display: inline-block;
+    margin-left: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    font-style: italic;
+}
+a {
+    text-decoration: none;
+};
