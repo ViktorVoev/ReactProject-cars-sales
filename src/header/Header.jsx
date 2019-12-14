@@ -20,7 +20,7 @@ class Header extends React.Component {
                 <img className='logo' src={logo} alt='logo' />
                 <div className='left'>
                 <Links to='/'>Home</Links>
-                <Links>About Us</Links>
+                <Links to='/about'>About Us</Links>
                 <Links to='/contact'>Contact</Links>
                 {isLogged && <Links to='/create'>Create</Links>}
                 </div>

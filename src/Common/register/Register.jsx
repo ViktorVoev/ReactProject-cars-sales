@@ -20,6 +20,11 @@ class Register extends React.Component {
     const errors = this.props.getFormErrorState();
     if (!!errors) { return; }
     const data = this.props.getFormState();
+    if (data.password !== data.rePassword) {
+      console.log(data);
+      alert("Password don't match!")
+      return
+    }
     userService.register(data).then(() => {
       this.props.history.push('/login');
     });

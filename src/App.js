@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Register from './Common/register/Register';
 import Login from './Common/login/login';
 import Logout from './Common/Logout/Logout';
+import About from './About/About';
 import Create from './create/Create';
 import Profile from './profile/Profile';
 import Home from './home/home';
@@ -84,6 +85,7 @@ class App extends React.Component {
             {/* <ProtectedRoutes isLogged={isLogged} redirectTo='/' path='/cars-list' render={render('Home page', Home, { isLogged })} /> */}
             
             <Route path='/register' render={render('Register', Register, { isLogged })} />
+            <Route path='/about' render={render('About', About)} />
             <Route path='/login' render={render('Login', Login, { isLogged, login: this.login })}  />
             <Route path='/logout' render={render('Logout', Logout, { isLogged, logout: this.logout })}  />
             <Route path='/contact' render={render('Contact us', Contact)}  />
