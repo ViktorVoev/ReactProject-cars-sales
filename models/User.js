@@ -17,7 +17,33 @@ const userSchema = new Schema({
     password: {
         type: String,
         require: true
+    },
+
+    age: {
+        type: String,
+        required: true
+    },
+
+    sex: {
+        type: String,
+        required: true
+    },
+    
+    firstName: {
+        type: String,
+        required: true
+    },
+
+    lastName: {
+        type: String,
+        required: true
+    },
+
+    favourite: {
+        type: Array,
+        required: false
     }
+
 
 });
 

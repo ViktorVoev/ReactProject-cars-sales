@@ -11,10 +11,12 @@ class Register extends React.Component {
   usernameOnChangeHandler = this.props.controlChangeHandlerFactory('username');
   passwordOnChangeHandler = this.props.controlChangeHandlerFactory('password');
   rePasswordOnChangeHandler = this.props.controlChangeHandlerFactory('rePassword');
+  firstNameOnChangeHandler = this.props.controlChangeHandlerFactory('firstName');
+  lastNameOnChangeHandler = this.props.controlChangeHandlerFactory('lastName');
+  ageOnChangeHandler = this.props.controlChangeHandlerFactory('age');
+  sexOnChangeHandler = this.props.controlChangeHandlerFactory('sex');
 
   submitHandler = () => {
-    // this.props.runValidations()
-    //   .then(formData => console.log(formData));
     const errors = this.props.getFormErrorState();
     if (!!errors) { return; }
     const data = this.props.getFormState();
@@ -50,6 +52,28 @@ class Register extends React.Component {
         {rePasswordError && <div className="error">{rePasswordError}</div>}
       </div>
       <div className="register">
+        <label>First Name:</label>
+        <input type="text" onChange={this.firstNameOnChangeHandler} />
+      </div>
+      <div className="register">
+        <label>Last Name:</label>
+        <input type="text" onChange={this.lastNameOnChangeHandler} />
+      </div>
+      <div className="register">
+        <label>Age:</label>
+        <input type="text" onChange={this.ageOnChangeHandler} />
+      </div>
+      <div className='register'> 
+                        <label htmlFor='register'>Sex:</label>
+                        <select id='sex' className='register' onChange={this.sexOnChangeHandler}>
+                            <option value=''>Choose...</option>
+                            <option value='Male'>Male</option>
+                            <option value='Female'>Female</option>
+                        </select>
+      </div>
+      
+     
+      <div className="register">
         <button className='register' type="button" onClick={this.submitHandler}>Register</button>
       </div>
     </form>;
@@ -59,7 +83,12 @@ class Register extends React.Component {
 const initialFormState = {
   username: '',
   password: '',
-  rePassword: ''
+  rePassword: '',
+  firstName: '',
+  lastName: '' , 
+  age: '',
+  sex: '',
+  favourite: []
 };
 
 const schema = yup.object({
@@ -71,10 +100,16 @@ const schema = yup.object({
     .required('Password is required')
     .min(6, 'Password must be more than 6 chars'),
 
-  rePassword: yup.string('Password must be a string')
-  // .oneOf([yup.ref('password'), ''], 'Passwords don\'t match')
-  // .required('Password is required')
-  // .min(6, 'Password must be more than 6 chars')
+  rePassword: yup.string('Password must be a string'),
+  firstName: yup.string('Must be string')
+                .required('Password is required')
+                .min(4, 'Username should be more than 4 chars'),
+  lastName: yup.string('Must be string')
+  .required('Password is required')
+  .min(4, 'Username should be more than 4 chars'),
+  age: yup.string('Must be string')
+  .required('Password is required'),
+  sex: yup.string('Must be string')
 });
 
 

@@ -12,13 +12,10 @@
     text-align: left;
 }
 
-.lit-det-cont button {
+.lit-con-btn {
     
     display: block;
     margin-top: 20px;
-    border: solid black;
-    border-radius: 10px;
-    background-color: blue;
 }
 
 .details-container p {
@@ -38,10 +35,14 @@
     float: left;
 }
 
-.details-container button {
+.lit-con-btn button {
+    font-weight: bold;
     font-size: 25px;
-    background-color: white;
-    border-color: black;
+    background-color: blue;
+    border: solid 2px black;
+    border-radius: 3px;
+    color: silver;
+    margin-left: 10px;
 }
 
 .details-container button:hover {

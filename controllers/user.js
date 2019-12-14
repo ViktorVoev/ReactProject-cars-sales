@@ -4,15 +4,16 @@ const utils = require('../utils');
 
 module.exports = {
     get: (req, res, next) => {
-        models.User.find()
-            .then((users) => res.send(users))
+        const id = req.params.id;
+        models.User.find({ _id: id })
+            .then((user) => res.send(user))
             .catch(next)
     },
 
     post: {
         register: (req, res, next) => {
-            const { username, password } = req.body;
-            models.User.create({ username, password })
+            const { username, password, age, sex, firstName, lastName, favourite } = req.body;
+            models.User.create({ username, password, age, sex, firstName, lastName, favourite })
                 .then((createdUser) => res.send(createdUser))
                 .catch(next)
         },
@@ -45,8 +46,8 @@ module.exports = {
 
     put: (req, res, next) => {
         const id = req.params.id;
-        const { username, password } = req.body;
-        models.User.update({ _id: id }, { username, password })
+        const { username, password, age, sex, firstName, lastName, favourite } = req.body;
+        models.User.update({ _id: id }, { username, password, age, sex, firstName, lastName, favourite })
             .then((updatedUser) => res.send(updatedUser))
             .catch(next)
     },

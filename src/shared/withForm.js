@@ -59,7 +59,7 @@ export default function withForm(Cmp, initialState, schema) {
           this.setState({ errors });
         }) || Promise.resolve();
     }
-
+    
     render() {
       return <Cmp {...this.props} controlChangeHandlerFactory={this.controlChangeHandlerFactory} getFormState={this.getFormState} runValidations={this.runValidations} getFormErrorState={this.getFormErrorState}></Cmp>
     }

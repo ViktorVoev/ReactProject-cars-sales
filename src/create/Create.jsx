@@ -12,7 +12,9 @@
                 model: '',
                 price: '',
                 description: '',
+                phoneNumber: '',
                 gearbox: '',
+                engine: '',
                 creator: window.localStorage.getItem('userId')
             }
         }
@@ -20,13 +22,13 @@
 
         changeMake = (e) => {
             this.setState({
-                make: e.target.value
+                make: e.target.value.toUpperCase()
             })
         }; 
 
         changeModel = (e) => {
             this.setState({
-                model: e.target.value
+                model: e.target.value.toUpperCase()
             })
         }; 
 
@@ -42,6 +44,12 @@
             })
         }; 
 
+        changePhoneNumber = (e) => {
+            this.setState({
+                phoneNumber: e.target.value
+            })
+        }; 
+
         changeImgUrl = (e) => {
             this.setState({
                 imgUrl: e.target.value
@@ -54,9 +62,15 @@
             })
         }; 
 
+        changeEngine = (e) => {
+            this.setState({
+                engine: e.target.value
+            })
+        };
+
         submitBtn = (e) => {
             e.preventDefault();
-            const data = this.state;
+            const data = this.state;            
             carService.create(data).then(() => {            
                 this.props.history.push('/')
                 
@@ -66,7 +80,7 @@
 
         
         render() {
-            const { imgUrl, make, model, price, description, gearbox } = this.state;
+            const { imgUrl, make, model, price, description, gearbox, engine, phoneNumber } = this.state;
             return (
                 <form className='create-ad'>
 
@@ -96,6 +110,11 @@
                     </div>
 
                     <div className='create'> 
+                    <label>Phone Number:</label>
+                    <input type="text" value={phoneNumber} onChange={this.changePhoneNumber} id="phoneNumber" />
+                    </div>
+                    <div className='create'>
+                    <div className='create-chek'> 
                         <label htmlFor='gearbox'>Gearbox:</label>
                         <select id='gearbox' className='create' onChange={this.changeGearbox} value={gearbox}>
                             <option value=''>Choose...</option>
@@ -103,6 +122,21 @@
                             <option value='Automatic'>Automatic</option>
                         </select>
                     </div>
+
+                    <div className='create-chek'> 
+                        <label htmlFor='engine'>Engine:</label>
+                        <select id='engine' className='create' onChange={this.changeEngine} value={engine}>
+                            <option value=''>Choose...</option>
+                            <option value='Diesel'>Diesel</option>
+                            <option value='Petrol'>Petrol</option>
+                            <option value='Hybrid'>Hybrid</option>
+                            <option value='Electric'>Electric</option>
+
+                        </select>
+                    </div>
+                    </div>
+
+                    
                     
                     <button className='create' type='button' onClick={this.submitBtn}>Create</button>
                 </form>

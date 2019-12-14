@@ -34,6 +34,16 @@ const carSchema = new Schema({
         required: false
     },
 
+    engine: {
+        type: String,
+        required: true
+    },
+
+    phoneNumber: {
+        type: String,
+        required: true
+    },
+
     creator: {
         type: String,
         required: true

@@ -1,21 +1,13 @@
-.app-container {
-    padding-left: 8%;
-    padding-right: 8%;
-    text-align: center;
-}
-
-.protected-login {
+.favourite button {
     font-weight: bold;
     font-size: 25px;
     background-color: blue;
     border: solid 2px black;
     border-radius: 3px;
     color: silver;
+    margin-left: 10px;
 }
 
-.protected-login:hover {
+.favourite button:hover {
     color: rgb(226, 62, 62);
 }
-
-
-

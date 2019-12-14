@@ -1,8 +1,21 @@
 .profile {
     text-align: center;
-    margin-top: 150px;
 }
 
 .profile label {
     font-size: 25px;
+}
+
+.profile button {
+    font-weight: bold;
+    font-size: 25px;
+    background-color: blue;
+    border: solid 2px black;
+    border-radius: 3px;
+    color: silver;
+    margin-left: 10px;
+}
+
+.profile button:hover {
+    color: rgb(226, 62, 62);
 }

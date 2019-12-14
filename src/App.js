@@ -14,14 +14,17 @@ import Main from './Main/Main';
 import userService from './services/car-service';
 import Edit from './Product/edit/Edit';
 import Delete from './Product/delete/Delete';
-
+import NotFound from './NotFoundPage/NotFound';
+import Link from './header/Links/Link';
+import Favourites from './profile/Favourites/Favourites';
+import Contact from './Contact/Contact';
 
 function render(title, Cmp, otherProps) {
   return function (props) {
     return <Main title={title} ><Cmp {...props} {...otherProps} /></Main>
-    
   };
 }
+
 function parseCookeis() {
   return document.cookie.split('; ').reduce((acc, cookie) => {
     const [cookieName, cookieValue] = cookie.split('=');
@@ -57,7 +60,7 @@ class App extends React.Component {
       };    
       const userData = JSON.parse(newData)   
       window.localStorage.setItem('userId',JSON.stringify(userData._id));
-      window.localStorage.setItem('username', userData.username);  
+      window.localStorage.setItem('username', userData.firstName);  
       this.setState({ isLogged: true });
       history.push('/');
     })
@@ -78,15 +81,63 @@ class App extends React.Component {
             <Route path='/' exact><Redirect to='/cars-list' /></Route>
     
             <Route path='/cars-list' render={render('Home page', Home, { isLogged })}/>
+            {/* <ProtectedRoutes isLogged={isLogged} redirectTo='/' path='/cars-list' render={render('Home page', Home, { isLogged })} /> */}
             
             <Route path='/register' render={render('Register', Register, { isLogged })} />
             <Route path='/login' render={render('Login', Login, { isLogged, login: this.login })}  />
             <Route path='/logout' render={render('Logout', Logout, { isLogged, logout: this.logout })}  />
-            <Route path='/create' render={render('Create', Create, { isLogged })}  />
-            <Route path='/profile'render={render(`${username}'s Profile`, Profile, { isLogged })}  />
-            <Route path='/details' render={render('Car details', Details, { isLogged })}  />
-            <Route path='/edit' render={render('Edit', Edit)}  />
-            <Route path='/delete' render={render('Delete', Delete)}  />
+            <Route path='/contact' render={render('Contact us', Contact)}  />
+
+            {/* <ProtectedRoute 
+              isAuthenticated={isLogged}
+              redirectTo='/login'
+              path='/create' render={render('Create', Create, { isLogged })}
+            /> */}
+            {isLogged ? 
+            <Route path='/create' render={render('Create', Create, { isLogged })}  /> : 
+            <div>
+              <h1>Must login first</h1>
+              <Link to='/login'><button className='protected-login'>Login</button></Link>
+            </div>
+            }
+            {isLogged ? 
+            <Route path='/details' render={render('Car details', Details, { isLogged })}  /> : 
+            <div>
+              <h1>Must login first</h1>
+              <Link to='/login'><button className='protected-login'>Login</button></Link>
+            </div>
+            }
+            {isLogged ? 
+            <Route path='/profile'render={render(`${username}'s Profile`, Profile, { isLogged })}  /> : 
+            <div>
+              <h1>Must login first</h1>
+              <Link to='/login'><button className='protected-login'>Login</button></Link>
+            </div>
+            }
+            {isLogged ? 
+            <Route path='/edit' render={render('Edit', Edit,{ isLogged })}  /> : 
+            <div>
+              <h1>Must login first</h1>
+              <Link to='/login'><button className='protected-login'>Login</button></Link>
+            </div>
+            }  
+            {isLogged ? 
+            <Route path='/delete' render={render('Delete', Delete)}  /> : 
+            <div>
+              <h1>Must login first</h1>
+              <Link to='/login'><button className='protected-login'>Login</button></Link>
+            </div>
+            }
+            {isLogged ? 
+            <Route path='/favourite' render={render('Favourite', Favourites, { isLogged })}  /> : 
+            <div>
+              <h1>Must login first</h1>
+              <Link to='/login'><button className='protected-login'>Login</button></Link>
+            </div>
+            }  
+            <Route path='*'>
+              <NotFound />
+            </Route>
           </Switch>
         </div>
         <Footer />

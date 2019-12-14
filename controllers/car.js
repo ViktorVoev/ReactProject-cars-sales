@@ -8,8 +8,8 @@ module.exports = {
     },
 
     post: (req, res, next) => {
-        const { imgUrl, make, model, price, description, gearbox, creator } = req.body;
-        models.Car.create({ imgUrl, make, model, price, description, gearbox, creator })
+        const { imgUrl, make, model, price, description, gearbox, engine, phoneNumber, creator } = req.body;
+        models.Car.create({ imgUrl, make, model, price, description, gearbox, engine, phoneNumber, creator })
             .then((car) => res.send(car))
             .catch(next);
     },
@@ -22,9 +22,9 @@ module.exports = {
     },
 
     put: (req, res, next) => {
-        const { imgUrl, make, model, price, description, gearbox } = req.body;
+        const { imgUrl, make, model, price, description, gearbox, engine, phoneNumber } = req.body;
         const id = req.params.id;
-        models.Car.updateOne({ _id: id }, { imgUrl, make, model, price, description, gearbox })
+        models.Car.updateOne({ _id: id }, { imgUrl, make, model, price, description, gearbox, engine, phoneNumber })
             .then((updatedCar) => res.send(updatedCar))
             .catch(next)
     },

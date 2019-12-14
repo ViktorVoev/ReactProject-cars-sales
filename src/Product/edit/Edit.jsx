@@ -13,6 +13,8 @@ class Create extends React.Component {
             price: '',
             description: '',
             gearbox: '',
+            phoneNumber: '',
+            engine: '',
             creator: window.localStorage.getItem('userId'),
             car: {}
         }
@@ -21,13 +23,13 @@ class Create extends React.Component {
 
     changeMake = (e) => {
         this.setState({
-            make: e.target.value
+            make: e.target.value.toUpperCase()
         })
     }; 
 
     changeModel = (e) => {
         this.setState({
-            model: e.target.value
+            model: e.target.value.toUpperCase()
         })
     }; 
 
@@ -49,6 +51,19 @@ class Create extends React.Component {
         })
     }; 
 
+    changeEngine = (e) => {
+        this.setState({
+            engine: e.target.value
+        })
+    };
+
+    changePhoneNumber = (e) => {
+        this.setState({
+            phoneNumber: e.target.value
+        })
+    }; 
+
+
     changeGearbox = (e) => {
         this.setState({
             gearbox: e.target.value
@@ -65,6 +80,8 @@ class Create extends React.Component {
                 price: car[0].price,
                 description: car[0].description,
                 gearbox: car[0].gearbox,
+                phoneNumber: car[0].phoneNumber,
+                engine: car[0].engine
              });
         });
     };
@@ -82,7 +99,7 @@ class Create extends React.Component {
 
     
     render() {
-        const { imgUrl, make, model, price, description, gearbox } = this.state;
+        const { imgUrl, make, model, price, description, gearbox, engine, phoneNumber } = this.state;
         
         
         
@@ -115,15 +132,34 @@ class Create extends React.Component {
                 </div>
 
                 <div className='edit'> 
-                    <label htmlFor='gearbox'>Gearbox:</label>
-                    <select id='gearbox' className='edit' onChange={this.changeGearbox} value={gearbox}>
-                        <option value=''>Choose...</option>
-                        <option value='Manual'>Manual</option>
-                        <option value='Automatic'>Automatic</option>
-                    </select>
-                </div>
+                    <label>Phone Number:</label>
+                    <input type="text" value={phoneNumber} onChange={this.changePhoneNumber} id="phoneNumber" />
+                    </div>
+
+                    <div className='edit'>
+                    <div className='edit-chek'> 
+                        <label htmlFor='gearbox'>Gearbox:</label>
+                        <select id='gearbox' className='edit' onChange={this.changeGearbox} value={gearbox}>
+                            <option value=''>Choose...</option>
+                            <option value='Manual'>Manual</option>
+                            <option value='Automatic'>Automatic</option>
+                        </select>
+                    </div>
+
+                    <div className='edit-chek'> 
+                        <label htmlFor='engine'>Gearbox:</label>
+                        <select id='engine' className='edit' onChange={this.changeEngine} value={engine}>
+                            <option value=''>Choose...</option>
+                            <option value='Diesel'>Diesel</option>
+                            <option value='Petrol'>Petrol</option>
+                            <option value='Hybrid'>Hybrid</option>
+                            <option value='Electric'>Electric</option>
+
+                        </select>
+                    </div>
+                    </div>
                 
-                <button className='edit' type='button' onClick={this.submitBtn}>Edit</button>
+                <button className='edit-btn' type='button' onClick={this.submitBtn}>Edit</button>
             </form>
         )
     }

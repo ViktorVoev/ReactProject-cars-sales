@@ -12,6 +12,7 @@
 
 .edit label {
     display: block;
+    color: white;
 }
 
 .edit input {
@@ -20,7 +21,21 @@
     font-size: 20px;
     background-color: silver;
 }
+.edit-chek {
+    display: inline-block;
+    margin-left: 20px;
+}
 
-form button {
-    background-color: silver;
+.edit-btn {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 25px;
+    background-color: blue;
+    border: solid 2px black;
+    border-radius: 3px;
+    color: silver;
+}
+
+.edit-btn:hover {
+    color: rgb(226, 62, 62);
 }

@@ -33,7 +33,6 @@ class Home extends React.Component {
     render() {
         const { cars } = this.state;
         const { isLogged } = this.props
-        const user = window.localStorage.getItem('userId');
         
         
         
@@ -44,7 +43,7 @@ class Home extends React.Component {
         {isLogged ? (cars ?
           <div className="cars">
             {cars.map((car) =>
-              <Products key={car._id} user={user} imgUrl={car.imgUrl} make={car.make} model={car.model} price={car.price} description={car.description} id={car._id} creator={car.creator}></Products>)}
+              <Products key={car._id} imgUrl={car.imgUrl} make={car.make} model={car.model} price={car.price} description={car.description} id={car._id} creator={car.creator}></Products>)}
           </div> : <div><h1>Loading ...</h1></div>
           ) : <div>
               <h1>Welcome to our site for car selling. If you want to continuous must login first.</h1>
